@@ -1,0 +1,31 @@
+﻿@model Smallpox.Models.UserViewModel
+@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Home Page";
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var json_object = @Html.Raw(JsonConvert.SerializeObject(Model.User));
+
+            $('#json').html('<pre><code>' + JSON.stringify(json_object, true, 4) + '</code></pre>');
+            SyntaxHighlighter.highlight();
+        });
+    </script>
+}
+
+
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a href="#" class="brand-logo">Smallpox</a>        
+    </div>
+</nav>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card grey lighten-5">
+            <div class="card-content black-text">
+                <div class="truncate" id="json"></div>
+            </div>
+        </div>
+    </div>
+</div>
